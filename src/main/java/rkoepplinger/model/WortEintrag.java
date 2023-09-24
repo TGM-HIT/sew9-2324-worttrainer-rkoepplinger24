@@ -90,10 +90,14 @@ public class WortEintrag {
      * @throws IllegalArgumentException Wirft eine Exception, wenn der Wert nicht passt
      */
     public void setWort(String wort) throws IllegalArgumentException {
+        if(wort == null) {
+            IllegalArgumentException e1 = new IllegalArgumentException("Kein gültiges Wort");
+            throw e1;
+        }
         if(wort.length() >= 2) {
             this.wort = wort;
         }else {
-            IllegalArgumentException e1 = new IllegalArgumentException("Kein g�ltiges Wort");
+            IllegalArgumentException e1 = new IllegalArgumentException("Kein gültiges Wort");
             throw e1;
         }
     }
