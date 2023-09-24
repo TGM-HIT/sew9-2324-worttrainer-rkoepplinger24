@@ -1,8 +1,8 @@
 package rkoepplinger.model;
 /**
- * Eine Klasse, die eine Wort un eine zugeh�rige URL speichert
+ * Eine Klasse, die ein Wort und eine zugehörige URL speichert
  * @author Robin Köpplinger
- * @version 2021-09-09
+ * @version 2023-09-24
  */
 public class WortEintrag {
     //2 Attribute
