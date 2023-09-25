@@ -33,7 +33,7 @@ public class WortListe {
      * @throws IndexOutOfBoundsException Wenn es kein passender Index ist
      */
     public WortEintrag getWort(int index) throws IndexOutOfBoundsException {
-        if(index < wortPaare.size() && index > 0) {
+        if(index < wortPaare.size() && index >= 0) {
             return wortPaare.get(index);
         }else {
             IndexOutOfBoundsException e1 = new IndexOutOfBoundsException();
@@ -48,16 +48,22 @@ public class WortListe {
      */
     public boolean loescheWort(String wort) throws IllegalArgumentException{
         //Prüfung, ob der übergebene Wert stimmen kann
+        boolean success = false;
+        if(wort == null) {
+            IllegalArgumentException e1 = new IllegalArgumentException("Kein gültiges Wort");
+            throw e1;
+        }
         if(wort.length() < 2) {
             IllegalArgumentException e1 = new IllegalArgumentException("Kein gültiges Wort");
             throw e1;
         }
-        if(wortPaare.indexOf(wort) != -1) {
-            wortPaare.remove(wort);
-            return true;
-        }else {
-            return false;
+        for (WortEintrag we : wortPaare) {
+            if(we.getWort().equals(wort)) {
+                success = true;
+                wortPaare.remove();
+            }
         }
+        return success;
     }
     /**
      * �berschreibt die toString Methode der Klasse WortEintrag, die die

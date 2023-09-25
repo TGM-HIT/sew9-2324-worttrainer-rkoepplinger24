@@ -20,13 +20,32 @@ public class Rechtschreibtrainer {
         this.liste = liste;
     }
     /**
-     * Gibt ein zufälliges Wort aus der Liste zurück und macht es zum aktuellem Wort
-     * @return Das Wort
+     * Wählt ein zufälliges neues Wort aus der Liste aus
+     * @throws IllegalArgumentException Falls die Liste leer ist.
      */
-    public WortEintrag zufaelligesWort() {
+    public void auswaehlenZufall() throws IllegalArgumentException{
+        if(liste.getAnzahlWoerter() == 0) {
+            throw new IllegalArgumentException("Liste ist leer");
+        }
         Random r1 = new Random();
         ausgewaehlt = r1.nextInt(liste.getAnzahlWoerter());
-        return liste.getWort(ausgewaehlt);
+    }
+
+    /**
+     * Wählt mittels des Indexes das nächste Wort aus.
+     * @param index Der Index
+     * @throws IllegalArgumentException Falls die Liste leer ist.
+     * @throws IndexOutOfBoundsException Falls der Index nicht passt.
+     */
+    public void auswaehlenIndex(int index) throws IndexOutOfBoundsException, IllegalArgumentException{
+        if(liste.getAnzahlWoerter() == 0) {
+            throw new IllegalArgumentException("Liste ist leer");
+        }
+        if(index < 0 || index >= liste.getAnzahlWoerter()) {
+            throw new IndexOutOfBoundsException();
+        }else {
+            ausgewaehlt = index;
+        }
     }
     /**
      * Gibt den aktuellen WortEintrag zurück
