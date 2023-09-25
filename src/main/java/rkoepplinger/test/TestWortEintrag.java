@@ -17,7 +17,7 @@ public class TestWortEintrag {
     @DisplayName("02 falsche URL wird nicht akzeptiert und eine Exception wird geworfen.")
     void falscheURLHinzufuegen() {
         Exception e1 = assertThrows(IllegalArgumentException.class, () -> {
-            WortEintrag w1 = new WortEintrag("Katze", "httttps://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/1200px-Hauskatze_langhaar.jpg");
+            WortEintrag w1 = new WortEintrag("Katze", "htttttps://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/1200px-Hauskatze_langh");
         } );
         assertTrue(e1.getMessage().startsWith("Keine gültige URL"));
     }
@@ -36,8 +36,8 @@ public class TestWortEintrag {
         assertTrue(e1.getMessage().startsWith("Kein gültiges Wort"));
     }
     @Test
-    @DisplayName("05 Nichts wird für Wort übergeben und das wird nicht akzeptiert und eine Exception wird geworfen.")
-    void nichtsFuerWortHinzufuegen() {
+    @DisplayName("05 Null wird für Wort übergeben und das wird nicht akzeptiert und eine Exception wird geworfen.")
+    void nullFuerWortHinzufuegen() {
         Exception e1 = assertThrows(IllegalArgumentException.class, () -> {
             WortEintrag w1 = new WortEintrag(null, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/1200px-Hauskatze_langhaar.jpg");
         } );

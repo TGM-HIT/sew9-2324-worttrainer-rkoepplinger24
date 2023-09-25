@@ -1,4 +1,7 @@
 package rkoepplinger.model;
+
+import org.apache.commons.validator.routines.UrlValidator;
+
 /**
  * Eine Klasse, die ein Wort und eine zugehörige URL speichert
  * @author Robin Köpplinger
@@ -24,51 +27,9 @@ public class WortEintrag {
      * @return true oder false
      */
     public static boolean checkURL(String url) {
-        //Sie muss mind. 10 Stellen haben
-        if(url.length() >= 10) {
-            //Sie muss mit https:// oder http:// beginnen
-            String text = url.substring(0, 8);
-            if(text.equals("https://")) {
-                //Es wird gepr�ft ob nach dem Beginn nur Buchstaben, dann ein Punkt und dann ein Buchstabe kommt
-                int zahl = 0;
-                for (int i = 8; i<url.length(); i++) {
-                    char buchstabe = url.charAt(i);
-                    if(buchstabe >= 'A' && buchstabe <= 'Z' || buchstabe >= 'a' && buchstabe <= 'z') {
-                        zahl++;
-                    }else if(buchstabe == '.' && zahl >= 1) {
-                        break;
-                    }else {
-                        return false;
-                    }
-                }
-                char wert = url.charAt(zahl+9);
-                if(wert >= 'A' && wert <= 'Z' || wert >= 'a' && wert <= 'z' ) {
-                    return true;
-                }
-            }else {
-                //Sie muss mit https:// oder http:// beginnen
-                text = url.substring(0, 7);
-                if(text.equals("http://")) {
-                    //Es wird gepr�ft ob nach dem Beginn nur Buchstaben, dann ein Punkt und dann ein Buchstabe kommt
-                    int zahl = 0;
-                    for (int i = 7; i<url.length(); i++) {
-                        char buchstabe = url.charAt(i);
-                        if(buchstabe >= 'A' && buchstabe <= 'Z' || buchstabe >= 'a' && buchstabe <= 'z') {
-                            zahl++;
-                        }else if(buchstabe == '.' && zahl >= 1) {
-                            break;
-                        }else {
-                            return false;
-                        }
-                    }
-                    char wert = url.charAt(zahl+8);
-                    if(wert >= 'A' && wert <= 'Z' || wert >= 'a' && wert <= 'z' ) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        String[] schemes = {"http", "https", "ftp"};
+        UrlValidator validator = new UrlValidator(schemes);
+        return validator.isValid(url);
     }
     /**
      * Gibt wort zurück
