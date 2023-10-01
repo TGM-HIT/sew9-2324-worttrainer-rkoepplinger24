@@ -18,7 +18,7 @@ public class PersistierungJSON extends Persistierung{
      * Ein PersistierungsJSON-Konstruktor, der die Persistierung mit JSON ermöglicht.
      * @param trainer Der Rechtschreibtrainer für die Persistierung.
      */
-       PersistierungJSON(Rechtschreibtrainer trainer) {
+    public PersistierungJSON(Rechtschreibtrainer trainer) {
         super(trainer);
     }
 
@@ -28,7 +28,6 @@ public class PersistierungJSON extends Persistierung{
     @Override
     public void speichern() {
         JSONObject json = new JSONObject(trainer);
-        System.out.println(json);
         FileWriter fw = null;
         try {
             fw = new FileWriter("persistierung.json");
@@ -56,7 +55,7 @@ public class PersistierungJSON extends Persistierung{
             Type type = new TypeToken<Rechtschreibtrainer>(){}.getType();
             trainer = gson.fromJson(input, type);
         }catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 }
