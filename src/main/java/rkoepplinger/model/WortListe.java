@@ -78,10 +78,10 @@ public class WortListe {
         return text;
     }
     /**
-     * Gibt die Anzahl an gespeicherten W�rter zur�ck
-     * @return die Anzahl
+     * Gibt die Liste mit den WortPaaren zurück
+     * @return die Wortpaare
      */
-    public int getAnzahlWoerter() {
-        return wortPaare.size();
+    public LinkedList<WortEintrag> getWortPaare() {
+        return wortPaare;
     }
 }
