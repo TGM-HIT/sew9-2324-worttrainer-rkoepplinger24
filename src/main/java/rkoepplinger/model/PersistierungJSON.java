@@ -7,12 +7,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
-
+/**
+ * Eine Persistierungsklasse die mit JSON arbeitet.
+ * @author Robin Köpplinger
+ * @version 2023-10-01
+ */
 public class PersistierungJSON extends Persistierung{
     /**
      * Ein PersistierungsJSON-Konstruktor, der die Persistierung mit JSON ermöglicht.
@@ -39,7 +44,7 @@ public class PersistierungJSON extends Persistierung{
                 try {
                     fw.close();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
         }
@@ -55,7 +60,7 @@ public class PersistierungJSON extends Persistierung{
             Type type = new TypeToken<Rechtschreibtrainer>(){}.getType();
             trainer = gson.fromJson(input, type);
         }catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }

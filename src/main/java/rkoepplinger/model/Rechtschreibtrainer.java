@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Eine WortTrainer Klasse, die den Benutzer trainiert
  * @author Robin K�pplinger
- * @version 2023-09-24
+ * @version 2023-10-01
  */
 public class Rechtschreibtrainer {
     //4 Attribute

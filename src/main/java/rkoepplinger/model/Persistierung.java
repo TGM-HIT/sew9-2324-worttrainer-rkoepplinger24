@@ -2,7 +2,7 @@ package rkoepplinger.model;
 /**
  * Eine abstrakte Klasse Persistierung, die als Superklasse für das Strategy-Pattern benutzt wird
  * @author Robin Köpplinger
- * @version 2023-09-29
+ * @version 2023-10-01
  */
 public abstract class Persistierung {
     protected Rechtschreibtrainer trainer;
